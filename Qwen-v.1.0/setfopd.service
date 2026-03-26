@@ -1,0 +1,25 @@
+[Unit]
+Description=SETFOP Filesystem State Monitor Daemon
+Documentation=man:setfopd(8)
+After=network.target local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/opt/setfop/bin/setfopd --config /etc/setfop/setfop.conf
+Restart=on-failure
+RestartSec=5s
+
+# Security Hardening
+User=root
+Group=root
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/log/setfop /var/lib/setfop
+
+# Capabilities needed to read all files and SELinux contexts
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_MAC_ADMIN CAP_CHOWN
+AmbientCapabilities=CAP_DAC_READ_SEARCH CAP_MAC_ADMIN
+
+[Install]
+WantedBy=multi-user.target

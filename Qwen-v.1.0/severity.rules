@@ -1,0 +1,24 @@
+# Severity Rules
+# Format: <path_pattern>|<change_type>|<severity>
+# Change Types: permission, ownership, selinux
+# Severities: CRITICAL, HIGH, MEDIUM, LOW
+
+# Critical System Files
+/etc/passwd|ownership|CRITICAL
+/etc/shadow|permission|CRITICAL
+/etc/shadow|ownership|CRITICAL
+/bin/*|permission|HIGH
+/sbin/*|permission|HIGH
+
+# General Executables
+/usr/bin/*|permission|HIGH
+/usr/local/bin/*|permission|MEDIUM
+
+# Config Files
+/etc/*|permission|MEDIUM
+/etc/*|ownership|MEDIUM
+
+# Default Fallback
+*|permission|LOW
+*|ownership|LOW
+*|selinux|LOW

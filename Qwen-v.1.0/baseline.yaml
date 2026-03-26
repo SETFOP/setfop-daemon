@@ -1,0 +1,10 @@
+# SETFOP Baseline Template
+# Generated automatically by setfopd
+# Do not edit manually unless you intend to update the approved state.
+
+version: "1.0"
+generated_at: "PENDING_INITIAL_SCAN"
+hostname: "PENDING_HOSTNAME"
+scan_scope: []
+entries: []
+# The daemon will populate 'entries' with file states after the first scan.
